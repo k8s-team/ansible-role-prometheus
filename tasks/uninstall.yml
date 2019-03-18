@@ -1,0 +1,10 @@
+---
+
+- name: Remove fluentd
+  shell: helm delete --purge {{ releaseName }}
+  ignore_errors: yes
+
+- name: Clean {{ destFolder }}
+  file:
+    path: "{{ destFolder }}"
+    state: absent

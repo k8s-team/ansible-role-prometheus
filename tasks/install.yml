@@ -1,0 +1,14 @@
+---
+
+- name: Register deployed count chart
+  shell: helm ls | grep {{ releaseName }} | wc -l
+  register: deployed
+
+- name: Install Prometheus
+  shell: |
+    helm install stable/prometheus \
+    --name prometheus \
+    --set server.persistentVolume.existingClaim={{ server.persistence }},\
+    server.ingress.enabled={{ server.ingress.enabled }},server.ingress.hosts={{ server.ingress.hosts }}
+
+  when: deployed.stdout == "0"

@@ -1,0 +1,18 @@
+---
+# defaults file for elasticsearch
+
+destFolder: "{{ ansible_env.HOME }}/.k8s-team/prometheus"
+state: present
+
+releaseName:  prometheus
+
+
+server:
+
+  persistence:
+    enabled: false
+    volumeClaim: volumeClaim
+
+  ingress:
+    enabled: false
+    hosts: [prometheus.example.com]
