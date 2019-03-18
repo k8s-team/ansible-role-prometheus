@@ -1,6 +1,6 @@
 ---
 
-- name: Remove fluentd
+- name: Remove Prometheus
   shell: helm delete --purge {{ releaseName }}
   ignore_errors: yes
 

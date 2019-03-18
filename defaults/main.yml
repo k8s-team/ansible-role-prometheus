@@ -15,4 +15,15 @@ server:
 
   ingress:
     enabled: false
-    hosts: [prometheus.example.com]
+    hosts: [prometheus-server.example.com]
+
+alertmanager:
+  enabled: false
+
+  persistence:
+    enabled: false
+    volumeClaim: volumeClaim
+
+  ingress:
+    enabled: false
+    hosts: [prometheus-alertmanager.example.com]

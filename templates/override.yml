@@ -1,0 +1,27 @@
+server:
+
+  persistentVolume:
+    enabled: {{ server.persistence.enabled }}
+    existingClaim: {{ server.persistence.volumeClaim }}
+
+  ingress:
+    enabled: {{ server.ingress.enabled }}
+    hosts:
+    {% for host in server.ingress.hosts %}
+    - {{ host }}
+    {% endfor %}
+
+alertmanager:
+
+  enabled: {{ alertmanager.enabled }}
+
+  persistentVolume:
+    enabled: {{ alertmanager.persistence.enabled }}
+    existingClaim: {{ alertmanager.persistence.volumeClaim }}
+
+  ingress:
+    enabled: {{ alertmanager.ingress.enabled }}
+    hosts:
+    {% for host in alertmanager.ingress.hosts %}
+    - {{ host }}
+    {% endfor %}
